@@ -15,7 +15,9 @@ export default function Page() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <div className="my-24 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <TraditionalFamily />
+      <div className="my-24 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <Impacts />
       <Transformation />
       <ValueGrid
