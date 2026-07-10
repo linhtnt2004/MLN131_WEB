@@ -21,6 +21,13 @@ export const site = {
   },
 }
 
+export const theoreticalFoundation = `
+Theo quan điểm của Chủ nghĩa Mác – Lênin, gia đình là một thiết chế xã hội cơ bản,
+chịu sự quy định của cơ sở kinh tế và phương thức sản xuất.
+Khi nền kinh tế chuyển sang kinh tế thị trường định hướng xã hội chủ nghĩa,
+gia đình Việt Nam tất yếu vận động và biến đổi để thích ứng.
+`
+
 export const navItems = [
   { id: "truyen-thong", label: "Truyền thống" },
   { id: "tac-dong", label: "Tác động" },
@@ -57,34 +64,34 @@ export const impacts = [
   {
     icon: "TrendingUp",
     title: "Kinh tế thị trường",
-    summary: "Thay đổi vai trò kinh tế và nhịp sống gia đình.",
+    summary: "Cơ sở kinh tế thay đổi kéo theo sự biến đổi của gia đình.",
     points: [
       "Gia đình chuyển từ đơn vị sản xuất sang đơn vị tiêu dùng.",
-      "Cả vợ và chồng cùng tham gia lao động, tăng thu nhập.",
-      "Áp lực kinh tế khiến thời gian dành cho nhau ít hơn.",
-      "Xuất hiện phân hóa giàu – nghèo giữa các gia đình.",
+      "Thu nhập phụ thuộc vào thị trường lao động.",
+      "Phụ nữ tham gia lao động nhiều hơn, tăng tính độc lập kinh tế.",
+      "Gia tăng áp lực cân bằng giữa công việc và đời sống gia đình.",
     ],
   },
   {
     icon: "Building2",
     title: "Đô thị hóa",
-    summary: "Dịch chuyển không gian sống và quy mô gia đình.",
+    summary: "Thay đổi không gian sống và cấu trúc gia đình.",
     points: [
-      "Gia đình hạt nhân (bố mẹ – con cái) trở nên phổ biến.",
-      "Di cư từ nông thôn ra thành thị làm giãn cách thế hệ.",
-      "Nhà ở chật hẹp, nhịp sống nhanh, quan hệ hàng xóm lỏng lẻo.",
-      "Người cao tuổi dễ rơi vào cảnh sống xa con cháu.",
+      "Tỷ lệ đô thị hóa Việt Nam đạt khoảng 42% (2023).",
+      "Gia đình hạt nhân trở thành mô hình phổ biến.",
+      "Di cư nông thôn – thành thị làm giãn cách thế hệ.",
+      "Áp lực chăm sóc người cao tuổi trong bối cảnh già hóa dân số.",
     ],
   },
   {
     icon: "Globe",
     title: "Hội nhập & chuyển đổi số",
-    summary: "Giao thoa văn hóa và công nghệ trong tổ ấm.",
+    summary: "Giao thoa văn hóa và tác động mạnh của công nghệ.",
     points: [
-      "Tiếp thu giá trị bình đẳng, dân chủ, tôn trọng cá nhân.",
-      "Công nghệ kết nối các thành viên ở xa nhau.",
-      "Nguy cơ 'sống ảo', giảm giao tiếp trực tiếp trong nhà.",
-      "Trẻ em tiếp cận thông tin toàn cầu từ rất sớm.",
+      "Tiếp thu giá trị bình đẳng giới và dân chủ.",
+      "Đề cao quyền cá nhân và tự do lựa chọn.",
+      "Công nghệ số thay đổi cách giao tiếp và giáo dục con cái.",
+      "Nguy cơ giảm tương tác trực tiếp giữa các thành viên.",
     ],
   },
 ]
@@ -92,6 +99,7 @@ export const impacts = [
 export const transformation = {
   before: "Truyền thống",
   after: "Hiện đại",
+  note: "Theo Tổng điều tra Dân số và Nhà ở 2019, gia đình hạt nhân chiếm trên 70% tổng số hộ gia đình Việt Nam.",
   rows: [
     {
       aspect: "Cấu trúc",
@@ -200,19 +208,23 @@ export const quiz = [
 ]
 
 export const aiUsage = {
-  tools: ["v0 (Vercel)", "ChatGPT", "Công cụ tìm kiếm học thuật"],
+  tools: [
+    "v0 (Vercel) – Tạo cấu trúc giao diện ban đầu",
+    "ChatGPT – Hỗ trợ hệ thống hóa nội dung và tối ưu logic trình bày",
+    "Công cụ tìm kiếm học thuật – Tra cứu số liệu và văn bản chính thống"
+  ],
   purpose: [
-    "Gợi ý bố cục và giao diện website.",
-    "Hỗ trợ hệ thống hóa nội dung theo chủ đề.",
-    "Kiểm tra chính tả và mạch lạc văn bản.",
+    "Xây dựng layout và component.",
+    "Gợi ý cấu trúc nội dung.",
+    "Hỗ trợ biên tập và kiểm tra ngôn ngữ.",
   ],
   verification: [
-    "Đối chiếu nội dung với giáo trình Triết học Mác – Lênin.",
-    "Kiểm chứng thông tin qua nguồn chính thống.",
-    "Nhóm biên tập và chịu trách nhiệm về nội dung cuối cùng.",
+    "Đối chiếu với giáo trình Triết học Mác – Lênin (Chương về gia đình).",
+    "Tham khảo Luật Hôn nhân và Gia đình Việt Nam.",
+    "Sử dụng số liệu từ Tổng cục Thống kê.",
   ],
   commitment:
-    "Nhóm cam kết sử dụng AI như công cụ hỗ trợ, nội dung được kiểm chứng và trình bày trung thực, phục vụ mục đích học tập.",
+    "Nhóm cam kết AI chỉ đóng vai trò hỗ trợ kỹ thuật và gợi ý cấu trúc. Nội dung học thuật đã được kiểm chứng và chỉnh sửa bởi các thành viên nhóm, chịu trách nhiệm hoàn toàn về tính chính xác.",
 }
 
 export const references = [
@@ -221,3 +233,10 @@ export const references = [
   "Tổng cục Thống kê – Số liệu về hộ gia đình Việt Nam.",
   "Các bài nghiên cứu về biến đổi gia đình Việt Nam thời kỳ đổi mới.",
 ]
+
+export const conclusion = `
+Gia đình Việt Nam thời kỳ 4.0 không đánh mất giá trị truyền thống,
+mà đang tái cấu trúc để thích ứng với điều kiện kinh tế thị trường và hội nhập quốc tế.
+Vấn đề không phải là lựa chọn giữa truyền thống hay hiện đại,
+mà là kế thừa và phát triển nhằm xây dựng gia đình no ấm, tiến bộ, hạnh phúc – tế bào lành mạnh của xã hội.
+`
