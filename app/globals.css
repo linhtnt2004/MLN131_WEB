@@ -163,3 +163,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+body {
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(200, 140, 80, 0.08),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(120, 80, 50, 0.08),
+      transparent 40%
+    );
+}

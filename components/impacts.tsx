@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { useState } from "react"
 import { X, Plus, Check } from "lucide-react"
 import { Section } from "@/components/section"
@@ -22,13 +23,31 @@ export function Impacts() {
         Theo quan điểm của Chủ nghĩa Mác – Lênin, gia đình là thiết chế xã hội chịu sự quy định của cơ sở kinh tế.
         Khi phương thức sản xuất thay đổi, cấu trúc và chức năng gia đình cũng biến đổi theo.
       </p>
-      <div className="grid gap-5 md:grid-cols-3">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: { staggerChildren: 0.2 }
+          }
+        }}
+        className="grid gap-5 md:grid-cols-3"
+      >
         {impacts.map((item, i) => (
-          <button
+          <motion.button
             key={item.title}
             type="button"
             onClick={() => setActive(i)}
-            className="group flex flex-col items-start rounded-2xl border border-border bg-card p-7 text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-lg"
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              show: { opacity: 1, y: 0 }
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.6 }}
+            className="group flex flex-col items-start rounded-2xl border border-border bg-card p-7 text-left transition-all duration-300 hover:-translate-y-2 hover:border-accent hover:shadow-xl"
           >
             <span className="mb-5 flex size-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
               <Icon name={item.icon} className="size-6" />
@@ -39,9 +58,9 @@ export function Impacts() {
               <Plus className="size-4" aria-hidden="true" />
               Xem chi tiết
             </span>
-          </button>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
 
       {current && (
         <div
@@ -64,14 +83,21 @@ export function Impacts() {
                   {current.title}
                 </h3>
               </div>
-              <button
+              <motion.button
+                key={item.title}
                 type="button"
-                onClick={() => setActive(null)}
-                className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                aria-label="Đóng"
+                onClick={() => setActive(i)}
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  show: { opacity: 1, y: 0 }
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.6 }}
+                className="group flex flex-col items-start rounded-2xl border border-border bg-card p-7 text-left transition-all duration-300 hover:-translate-y-2 hover:border-accent hover:shadow-xl"
               >
                 <X className="size-5" />
-              </button>
+              </motion.button>
             </div>
             <ul className="space-y-3">
               {current.points.map((p) => (

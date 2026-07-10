@@ -1,44 +1,73 @@
-import type { ReactNode } from "react"
+"use client"
+
+import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface SectionProps {
   id?: string
   eyebrow?: string
-  title: string
+  title?: string
   description?: string
-  children: ReactNode
-  className?: string
   alt?: boolean
+  children: React.ReactNode
 }
 
-export function Section({ id, eyebrow, title, description, children, className, alt }: SectionProps) {
+export function Section({
+  id,
+  eyebrow,
+  title,
+  description,
+  alt,
+  children,
+}: SectionProps) {
   return (
-    <section
+    <motion.section
       id={id}
+      initial={{ opacity: 0, y: 120 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.1, ease: "easeOut" }}
+      viewport={{ once: true }}
       className={cn(
-        "scroll-mt-20 px-5 py-20 md:py-28",
-        alt && "bg-secondary/40",
-        className,
+        "relative px-6 py-28 md:px-10",
+        alt && "bg-secondary/30"
       )}
     >
-      <div className="mx-auto max-w-6xl">
-        <header className="mx-auto mb-12 max-w-2xl text-center">
-          {eyebrow && (
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              {eyebrow}
-            </span>
-          )}
-          <h2 className="text-balance font-serif text-3xl font-bold leading-tight text-foreground md:text-4xl">
+      <div className="mx-auto max-w-6xl text-center">
+        {eyebrow && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="mb-4 text-xs font-semibold tracking-widest text-accent uppercase"
+          >
+            {eyebrow}
+          </motion.p>
+        )}
+
+        {title && (
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mb-6 font-serif text-4xl font-bold md:text-6xl"
+          >
             {title}
-          </h2>
-          {description && (
-            <p className="mx-auto mt-4 max-w-xl text-pretty leading-relaxed text-muted-foreground">
-              {description}
-            </p>
-          )}
-        </header>
+          </motion.h2>
+        )}
+
+        {description && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mx-auto mb-16 max-w-2xl text-muted-foreground"
+          >
+            {description}
+          </motion.p>
+        )}
+
         {children}
       </div>
-    </section>
+    </motion.section>
   )
 }
