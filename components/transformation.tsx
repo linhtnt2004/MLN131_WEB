@@ -21,9 +21,8 @@ export function Transformation() {
         {rows.map((row, i) => (
           <div
             key={row.aspect}
-            className={`grid grid-cols-[0.8fr_1fr_1fr] items-stretch border-t border-border ${
-              i % 2 === 0 ? "bg-card" : "bg-secondary/40"
-            }`}
+            className={`grid grid-cols-[0.8fr_1fr_1fr] items-stretch border-t border-border ${i % 2 === 0 ? "bg-card" : "bg-secondary/40"
+              }`}
           >
             <div className="flex items-center px-4 py-4 font-serif text-sm font-bold text-foreground md:px-6 md:text-base">
               {row.aspect}
@@ -38,6 +37,11 @@ export function Transformation() {
           </div>
         ))}
       </div>
+      {transformation.note && (
+        <p className="mt-4 text-center text-sm italic text-muted-foreground">
+          {transformation.note}
+        </p>
+      )}
     </Section>
   )
 }

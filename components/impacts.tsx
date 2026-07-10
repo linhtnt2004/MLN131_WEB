@@ -18,6 +18,10 @@ export function Impacts() {
       title="Điều gì đang làm gia đình đổi thay?"
       description="Nhấn vào từng thẻ để xem giải thích ngắn gọn."
     >
+      <p className="max-w-3xl mx-auto text-sm text-muted-foreground mt-4">
+        Theo quan điểm của Chủ nghĩa Mác – Lênin, gia đình là thiết chế xã hội chịu sự quy định của cơ sở kinh tế.
+        Khi phương thức sản xuất thay đổi, cấu trúc và chức năng gia đình cũng biến đổi theo.
+      </p>
       <div className="grid gap-5 md:grid-cols-3">
         {impacts.map((item, i) => (
           <button
