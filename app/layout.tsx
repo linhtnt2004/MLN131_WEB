@@ -26,6 +26,8 @@ export const viewport: Viewport = {
   themeColor: '#3a2d22',
 }
 
+import { FamilyValueProvider } from "./context/FamilyValueContext"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,8 +36,10 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`light scroll-smooth ${inter.variable} ${playfair.variable}`}>
       <body className="bg-background font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <FamilyValueProvider>
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </FamilyValueProvider>
       </body>
     </html>
   )

@@ -41,22 +41,22 @@ export const traditionalCards = [
   {
     icon: "Home",
     title: "Cấu trúc",
-    text: "Gia đình mở rộng, nhiều thế hệ chung sống, gắn với dòng họ và làng xã.",
+    text: "Gia đình mở rộng, nhiều thế hệ chung sống, gắn kết chặt chẽ với cộng đồng dòng họ và không gian làng xã.",
   },
   {
     icon: "Utensils",
-    title: "Chức năng",
-    text: "Sản xuất, giáo dục, chăm sóc và truyền dạy đạo lý cho con cháu.",
+    title: "Chức năng cơ bản",
+    text: "Thực hiện chức năng tái sản xuất ra con người, chức năng kinh tế và tổ chức tiêu dùng, chức năng giáo dục - xã hội hóa.",
   },
   {
     icon: "Users",
     title: "Quan hệ",
-    text: "Tôn ti trật tự, kính trên nhường dưới, vai trò người cha làm chủ.",
+    text: "Tôn ti trật tự nghiêm ngặt, kính trên nhường dưới, đề cao vai trò của người cha làm chủ trong gia đình.",
   },
   {
     icon: "Heart",
     title: "Giá trị cốt lõi",
-    text: "Hiếu nghĩa, thủy chung, đoàn kết và trách nhiệm với gia đình.",
+    text: "Hiếu nghĩa, thủy chung, tinh thần đùm bọc, đoàn kết và trách nhiệm tuyệt đối với gia đình.",
   },
 ]
 
@@ -66,9 +66,9 @@ export const impacts = [
     title: "Kinh tế thị trường",
     summary: "Cơ sở kinh tế thay đổi kéo theo sự biến đổi của gia đình.",
     points: [
-      "Gia đình chuyển từ đơn vị sản xuất sang đơn vị tiêu dùng.",
-      "Thu nhập phụ thuộc vào thị trường lao động.",
-      "Phụ nữ tham gia lao động nhiều hơn, tăng tính độc lập kinh tế.",
+      "Gia đình chuyển dần từ đơn vị sản xuất sang đơn vị tiêu dùng.",
+      "Thu nhập phụ thuộc vào thị trường lao động đa dạng.",
+      "Phụ nữ tham gia lao động xã hội nhiều hơn, tăng tính độc lập kinh tế.",
       "Gia tăng áp lực cân bằng giữa công việc và đời sống gia đình.",
     ],
   },
@@ -77,10 +77,10 @@ export const impacts = [
     title: "Đô thị hóa",
     summary: "Thay đổi không gian sống và cấu trúc gia đình.",
     points: [
-      "Tỷ lệ đô thị hóa Việt Nam đạt khoảng 42% (2023).",
-      "Gia đình hạt nhân trở thành mô hình phổ biến.",
-      "Di cư nông thôn – thành thị làm giãn cách thế hệ.",
-      "Áp lực chăm sóc người cao tuổi trong bối cảnh già hóa dân số.",
+      "Tỷ lệ đô thị hóa Việt Nam đạt mức 42.7% (Năm 2023 - TCTK).",
+      "Gia đình hạt nhân trở thành mô hình phổ biến (chiếm trên 70%).",
+      "Di cư lao động từ nông thôn ra thành thị làm giãn cách các thế hệ.",
+      "Áp lực chăm sóc người cao tuổi trong bối cảnh già hóa dân số nhanh.",
     ],
   },
   {
@@ -88,10 +88,10 @@ export const impacts = [
     title: "Hội nhập & chuyển đổi số",
     summary: "Giao thoa văn hóa và tác động mạnh của công nghệ.",
     points: [
-      "Tiếp thu giá trị bình đẳng giới và dân chủ.",
-      "Đề cao quyền cá nhân và tự do lựa chọn.",
-      "Công nghệ số thay đổi cách giao tiếp và giáo dục con cái.",
-      "Nguy cơ giảm tương tác trực tiếp giữa các thành viên.",
+      "Tiếp thu mạnh mẽ các giá trị bình đẳng giới và dân chủ.",
+      "Đề cao quyền cá nhân và tự do lựa chọn của mỗi thành viên.",
+      "Công nghệ số thay đổi hoàn toàn cách giao tiếp và giáo dục con cái.",
+      "Nguy cơ giảm tương tác trực tiếp, hình thành khoảng cách thế hệ số.",
     ],
   },
 ]
@@ -108,8 +108,8 @@ export const transformation = {
     },
     {
       aspect: "Chức năng",
-      before: "Sản xuất, giáo dục tại gia.",
-      after: "Tiêu dùng, giáo dục qua nhà trường & xã hội.",
+      before: "Sản xuất, giáo dục và xã hội hóa tại gia.",
+      after: "Tiêu dùng, chức năng giáo dục - xã hội hóa chuyển dần qua nhà trường & xã hội.",
     },
     {
       aspect: "Quan hệ",
@@ -141,32 +141,59 @@ export const modernValues = [
 
 export const scenarios = [
   {
-    situation: "Bà nội muốn sống chung, nhưng nhà chung cư khá chật. Gia đình nên làm gì?",
+    situation: "Bà nội đã lớn tuổi muốn lên thành phố sống chung, nhưng căn hộ chung cư của hai vợ chồng khá chật hẹp.",
     options: [
-      { text: "Đón bà về sống chung và bố trí lại không gian phù hợp.", correct: true },
-      { text: "Để bà ở quê một mình cho tiện.", correct: false },
+      { text: "Đón bà lên, nhường phòng hoặc bố trí lại không gian sống để bà thoải mái.", correct: true },
+      { text: "Từ chối khéo và thuê người chăm sóc bà ở quê để giữ không gian riêng tư.", correct: false },
+      { text: "Mua nhà to hơn rồi mới đón, tạm thời cứ để bà tự lo.", correct: false },
     ],
-    feedback:
-      "Giữ gìn đạo hiếu bằng cách sắp xếp không gian và chăm sóc bà, đồng thời tôn trọng nhu cầu của bà.",
+    feedback: "Giữ gìn đạo hiếu bằng cách sắp xếp linh hoạt không gian sống là nét đẹp truyền thống cần gìn giữ.",
   },
   {
-    situation: "Con gái muốn theo ngành nghệ thuật thay vì ngành 'ổn định' bố mẹ chọn.",
+    situation: "Con cái muốn theo đuổi một ngành nghề mới mẻ (như eSports, sáng tạo), trong khi bố mẹ muốn con làm công chức cho 'ổn định'.",
     options: [
-      { text: "Lắng nghe, cùng con phân tích và tôn trọng lựa chọn.", correct: true },
-      { text: "Bắt con theo ý bố mẹ vì 'con phải nghe lời'.", correct: false },
+      { text: "Bắt buộc con thi vào ngành bố mẹ chọn vì 'cá không ăn muối cá ươn'.", correct: false },
+      { text: "Để con tự quyết định hoàn toàn, không can thiệp vì đó là cuộc đời của con.", correct: false },
+      { text: "Lắng nghe con trình bày kế hoạch, cùng phân tích rủi ro và ủng hộ con thử sức.", correct: true },
     ],
-    feedback:
-      "Giá trị hiện đại đề cao tôn trọng cá nhân và dân chủ, song vẫn cần sự định hướng, đồng hành của cha mẹ.",
+    feedback: "Giá trị hiện đại đề cao tôn trọng cá nhân và dân chủ, nhưng vẫn cần sự đồng hành, định hướng từ cha mẹ.",
   },
   {
-    situation: "Cả nhà ai cũng cầm điện thoại trong bữa cơm tối.",
+    situation: "Trong bữa cơm tối, mỗi người đều cầm điện thoại để lướt mạng xã hội hoặc trả lời tin nhắn công việc.",
     options: [
-      { text: "Thống nhất 'giờ không điện thoại' để trò chuyện.", correct: true },
-      { text: "Cứ để vậy, ai cũng bận việc riêng.", correct: false },
+      { text: "Thống nhất nguyên tắc 'bữa cơm không màn hình' để trò chuyện, kết nối.", correct: true },
+      { text: "Cho rằng đó là bình thường trong thời đại số, miễn là ăn cơm cùng nhau.", correct: false },
+      { text: "Cắt luôn WiFi giờ ăn cơm để ép mọi người phải nói chuyện.", correct: false },
     ],
-    feedback:
-      "Ứng dụng công nghệ là tốt, nhưng cần cân bằng để giữ sự gắn kết và giao tiếp trực tiếp trong gia đình.",
+    feedback: "Ứng dụng công nghệ là tốt, nhưng cần biết cân bằng để không đánh mất sự giao tiếp trực tiếp trong gia đình.",
   },
+  {
+    situation: "Hai vợ chồng đều đi làm 8 tiếng/ngày, nhưng khi về nhà thì vợ mặc định phải nấu cơm, dọn dẹp, rửa bát.",
+    options: [
+      { text: "Đó là thiên chức của người phụ nữ, vợ nên tự hào và làm cho tốt.", correct: false },
+      { text: "Thuê luôn giúp việc để cả hai không phải làm gì, dành thời gian nghỉ ngơi.", correct: false },
+      { text: "Chủ động phân công và cùng nhau chia sẻ việc nhà tùy theo thế mạnh mỗi người.", correct: true },
+    ],
+    feedback: "Bình đẳng giới trong gia đình 4.0 không chỉ là ngang quyền mà còn là sự chia sẻ trách nhiệm.",
+  },
+  {
+    situation: "Con ở độ tuổi dậy thì có biểu hiện chống đối, lười học và hay cãi lại lời cha mẹ.",
+    options: [
+      { text: "Dùng đòn roi và kỷ luật thép 'thương cho roi cho vọt' để con sợ và ngoan lại.", correct: false },
+      { text: "Tìm hiểu tâm lý lứa tuổi, trò chuyện như những người bạn để gỡ rối cùng con.", correct: true },
+      { text: "Kệ con, tới tuổi này đứa nào cũng vậy, lớn lên tự khắc hiểu.", correct: false },
+    ],
+    feedback: "Dạy con bằng sự thấu hiểu và tâm lý học hiện đại mang lại hiệu quả bền vững hơn là áp đặt quyền uy.",
+  },
+  {
+    situation: "Thu nhập của hai vợ chồng có sự chênh lệch lớn (vợ kiếm nhiều tiền hơn chồng khá nhiều).",
+    options: [
+      { text: "Vợ tự mặc định mình là 'trụ cột' và có quyền quyết định mọi khoản chi lớn.", correct: false },
+      { text: "Chồng cảm thấy tự ái và yêu cầu vợ nghỉ làm ở nhà để giữ thể diện.", correct: false },
+      { text: "Công khai bàn bạc tài chính và tôn trọng ý kiến nhau trong mọi quyết định.", correct: true },
+    ],
+    feedback: "Tiền bạc đóng vai trò nền tảng, nhưng sự minh bạch và tôn trọng lẫn nhau mới giữ gìn được hạnh phúc.",
+  }
 ]
 
 export const quiz = [
@@ -209,22 +236,22 @@ export const quiz = [
 
 export const aiUsage = {
   tools: [
-    "v0 (Vercel) – Tạo cấu trúc giao diện ban đầu",
-    "ChatGPT – Hỗ trợ hệ thống hóa nội dung và tối ưu logic trình bày",
-    "Công cụ tìm kiếm học thuật – Tra cứu số liệu và văn bản chính thống"
+    "v0 (Vercel) – Hỗ trợ khởi tạo cấu trúc giao diện UI ban đầu.",
+    "Antigravity (Gemini) – Lập trình Logic API, tích hợp phân tích thuật toán La Bàn AI và sửa lỗi hệ thống.",
+    "Midjourney / DALL-E – Sinh hình ảnh minh họa đậm chất văn hóa gia đình Việt Nam.",
   ],
   purpose: [
-    "Xây dựng layout và component.",
-    "Gợi ý cấu trúc nội dung.",
-    "Hỗ trợ biên tập và kiểm tra ngôn ngữ.",
+    "Xây dựng layout và component tương tác (Scrollytelling).",
+    "Phân tích dữ liệu người dùng thời gian thực (Real-time analysis) cho bài trắc nghiệm.",
+    "Tạo các hình ảnh bản quyền phục vụ riêng cho dự án môn Lý luận Chính trị.",
   ],
   verification: [
-    "Đối chiếu với giáo trình Triết học Mác – Lênin (Chương về gia đình).",
-    "Tham khảo Luật Hôn nhân và Gia đình Việt Nam.",
-    "Sử dụng số liệu từ Tổng cục Thống kê.",
+    "Đối chiếu toàn bộ lý thuyết với Giáo trình Triết học Mác – Lênin (Chương về gia đình).",
+    "Kiểm chứng tính đúng đắn với Luật Hôn nhân và Gia đình Việt Nam hiện hành.",
+    "Cập nhật số liệu mới nhất từ Tổng cục Thống kê (2023 - 2024).",
   ],
   commitment:
-    "Nhóm cam kết AI chỉ đóng vai trò hỗ trợ kỹ thuật và gợi ý cấu trúc. Nội dung học thuật đã được kiểm chứng và chỉnh sửa bởi các thành viên nhóm, chịu trách nhiệm hoàn toàn về tính chính xác.",
+    "TUYÊN NGÔN LIÊM CHÍNH: Nhóm cam kết AI chỉ đóng vai trò công cụ hỗ trợ kỹ thuật và trình bày (Tooling & Visualization). Toàn bộ nội dung học thuật, lý thuyết, và lập luận đều được đối chiếu, kiểm chứng chéo với giáo trình chính thức và do các thành viên tự biên soạn, chịu trách nhiệm hoàn toàn về tính chính xác và học thuật.",
 }
 
 export const references = [
