@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Compass, Loader2, Sparkles, Cpu, Fingerprint } from "lucide-react";
+import { Compass, Loader2, Sparkles, Cpu, Fingerprint, Settings, X, Key } from "lucide-react";
 import { useFamilyValue } from "../app/context/FamilyValueContext";
 
 const loadingSteps = [
@@ -17,6 +17,7 @@ export function ResultCompass() {
   const [loading, setLoading] = useState(false);
   const [apiKey, setApiKey] = useState("");
   const [loadingPhase, setLoadingPhase] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Load key từ localStorage khi mới vào trang
   useEffect(() => {
@@ -128,52 +129,45 @@ export function ResultCompass() {
             Hệ thống cần thu thập ít nhất {MIN_CHOICES_REQUIRED} module để khởi động ma trận phân tích tính cách gia đình của bạn.
           </p>
 
-          {/* Ô nhập API Key */}
-          <div className="mb-8 w-full max-w-sm">
-            <input 
-              type="password"
-              placeholder="Nhập Gemini API Key của bạn (Tuỳ chọn)"
-              className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/50 focus:border-blue-500 rounded-xl text-slate-300 font-mono text-sm outline-none transition-colors shadow-inner"
-              value={apiKey}
-              onChange={(e) => {
-                setApiKey(e.target.value);
-                localStorage.setItem("user_gemini_key", e.target.value);
-              }}
-            />
-            <p className="text-[10px] text-slate-500 mt-2 text-left px-2">
-              *Key được lưu ở trình duyệt, nếu để trống sẽ dùng quota mặc định của server.
-            </p>
-          </div>
-
           {!resultText && !error && (
-            <div className="relative group">
-              {/* Vòng sáng quanh nút khi ready */}
-              {isReady && !loading && (
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-              )}
-              
-              <button
-                onClick={handleAnalyze}
-                disabled={!isReady || loading}
-                className={`relative flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 ${
-                  isReady && !loading
-                    ? "bg-slate-900 border border-slate-700 text-blue-400 hover:text-blue-300 cursor-pointer"
-                    : "bg-slate-900/50 border border-slate-800 text-slate-600 cursor-not-allowed"
-                }`}
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
-                    <span className="text-slate-300 font-mono text-sm">
-                      {loadingSteps[loadingPhase]}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <Fingerprint className="w-5 h-5" />
-                    Bắt đầu Phân tích AI
-                  </>
+            <div className="flex flex-col items-center gap-6">
+              <div className="relative group">
+                {/* Vòng sáng quanh nút khi ready */}
+                {isReady && !loading && (
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
                 )}
+                
+                <button
+                  onClick={handleAnalyze}
+                  disabled={!isReady || loading}
+                  className={`relative flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 ${
+                    isReady && !loading
+                      ? "bg-slate-900 border border-slate-700 text-blue-400 hover:text-blue-300 cursor-pointer"
+                      : "bg-slate-900/50 border border-slate-800 text-slate-600 cursor-not-allowed"
+                  }`}
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
+                      <span className="text-slate-300 font-mono text-sm">
+                        {loadingSteps[loadingPhase]}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <Fingerprint className="w-5 h-5" />
+                      Bắt đầu Phân tích AI
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="flex items-center gap-2 text-slate-500 hover:text-blue-400 text-xs font-mono transition-colors bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800"
+              >
+                <Settings className="w-4 h-4" />
+                Cấu hình API Key (Tuỳ chọn)
               </button>
             </div>
           )}
@@ -228,6 +222,85 @@ export function ResultCompass() {
                   </motion.div>
                 )}
               </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Modal Nhập API Key */}
+          <AnimatePresence>
+            {isModalOpen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+                <motion.div 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  exit={{ opacity: 0 }}
+                  onClick={() => setIsModalOpen(false)}
+                  className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                />
+                
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  className="relative bg-slate-900 border border-slate-700 p-6 md:p-8 rounded-3xl shadow-2xl w-full max-w-md z-10 overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500" />
+                  
+                  <button 
+                    onClick={() => setIsModalOpen(false)}
+                    className="absolute top-4 right-4 text-slate-400 hover:text-slate-200 transition-colors p-2 hover:bg-slate-800 rounded-full"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-2.5 bg-blue-500/20 rounded-xl border border-blue-500/30">
+                      <Key className="w-6 h-6 text-blue-400" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-200 font-serif">Cấu hình API Key</h3>
+                  </div>
+
+                  <p className="text-sm text-slate-400 mb-6 text-left leading-relaxed">
+                    Để hệ thống hoạt động ổn định nhất, bạn có thể sử dụng <b>Gemini API Key</b> của riêng mình thay vì dùng chung quota của máy chủ. 
+                    <br/><br/>
+                    Bạn có thể lấy Key miễn phí tại <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline font-medium transition-colors">Google AI Studio</a>.
+                  </p>
+
+                  <div className="text-left mb-8">
+                    <label className="block text-[11px] font-mono text-slate-500 mb-2 uppercase tracking-wider font-semibold">
+                      Your Gemini API Key
+                    </label>
+                    <input 
+                      type="password"
+                      placeholder="AIzaSy..."
+                      className="w-full px-4 py-3.5 bg-slate-950 border border-slate-700 focus:border-blue-500 rounded-xl text-slate-300 font-mono text-sm outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                      value={apiKey}
+                      onChange={(e) => {
+                        setApiKey(e.target.value);
+                        localStorage.setItem("user_gemini_key", e.target.value);
+                      }}
+                    />
+                    <p className="text-[11px] text-slate-500 mt-2.5 flex items-center gap-1.5">
+                      <Sparkles className="w-3 h-3 text-yellow-500" />
+                      Key được lưu trữ an toàn trong trình duyệt của bạn.
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end gap-3">
+                    <button 
+                      onClick={() => setIsModalOpen(false)}
+                      className="px-5 py-2.5 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors text-sm font-bold"
+                    >
+                      Đóng
+                    </button>
+                    <button 
+                      onClick={() => setIsModalOpen(false)}
+                      className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white transition-all duration-300 text-sm font-bold shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+                    >
+                      Xác nhận
+                    </button>
+                  </div>
+                </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </div>
