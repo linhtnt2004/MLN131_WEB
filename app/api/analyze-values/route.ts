@@ -1,14 +1,27 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Khởi tạo Gemini API Client (Lấy API Key từ biến môi trường)
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-
 export async function POST(request: Request) {
   try {
     // 1. Lấy dữ liệu người dùng gửi lên
     const body = await request.json();
     const { choices } = body;
+
+    // Lấy API key từ header (do frontend gửi)
+    const userApiKey = request.headers.get("x-gemini-api-key");
+    
+    // Ưu tiên dùng key của user, nếu không có thì dùng key ở .env
+    const apiKey = userApiKey || process.env.GEMINI_API_KEY;
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { success: false, error: "Thiếu API Key. Vui lòng nhập API Key hoặc cấu hình trên server." },
+        { status: 401 },
+      );
+    }
+
+    // Khởi tạo Gemini với key vừa lấy được
+    const genAI = new GoogleGenerativeAI(apiKey);
 
     if (!choices || !Array.isArray(choices) || choices.length === 0) {
       return NextResponse.json(
