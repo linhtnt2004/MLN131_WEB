@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Section } from "@/components/section"
 import { Icon } from "@/components/icon"
 import { traditionalCards } from "@/lib/content"
@@ -13,6 +14,22 @@ export function TraditionalFamily() {
       title="Gia đình Việt Nam truyền thống"
       description="Nền tảng văn hóa được hun đúc qua nhiều thế hệ."
     >
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="mb-16 flex justify-center"
+      >
+        <Image
+          src="/images/traditional-family.png"
+          alt="Gia đình truyền thống Việt Nam"
+          width={1000}
+          height={500}
+          className="rounded-3xl shadow-xl border border-border"
+        />
+      </motion.div>
+
       <div className="grid gap-8 lg:grid-cols-5">
 
         {/* Card lớn bên trái */}

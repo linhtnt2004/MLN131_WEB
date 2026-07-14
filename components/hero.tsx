@@ -58,7 +58,7 @@ export function Hero() {
           className="mt-16"
         >
           <Image
-            src="/images/bg-harmony.png"
+            src="/images/modern-family.png"
             alt="Gia đình hiện đại"
             width={900}
             height={600}
