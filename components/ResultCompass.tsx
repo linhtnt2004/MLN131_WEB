@@ -15,7 +15,14 @@ const loadingSteps = [
 export function ResultCompass() {
   const { userChoices } = useFamilyValue();
   const [loading, setLoading] = useState(false);
+  const [apiKey, setApiKey] = useState("");
   const [loadingPhase, setLoadingPhase] = useState(0);
+
+  // Load key từ localStorage khi mới vào trang
+  useEffect(() => {
+    const savedKey = localStorage.getItem("user_gemini_key");
+    if (savedKey) setApiKey(savedKey);
+  }, []);
   const [resultText, setResultText] = useState("");
   const [error, setError] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -63,7 +70,10 @@ export function ResultCompass() {
     try {
       const res = await fetch("/api/analyze-values", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-gemini-api-key": apiKey
+        },
         body: JSON.stringify({ choices: userChoices }),
       });
 
@@ -117,6 +127,23 @@ export function ResultCompass() {
             Dữ liệu hành vi hiện tại: <span className="text-blue-400 font-mono font-bold">{userChoices.length}/{MIN_CHOICES_REQUIRED}</span> module. 
             Hệ thống cần thu thập ít nhất {MIN_CHOICES_REQUIRED} module để khởi động ma trận phân tích tính cách gia đình của bạn.
           </p>
+
+          {/* Ô nhập API Key */}
+          <div className="mb-8 w-full max-w-sm">
+            <input 
+              type="password"
+              placeholder="Nhập Gemini API Key của bạn (Tuỳ chọn)"
+              className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/50 focus:border-blue-500 rounded-xl text-slate-300 font-mono text-sm outline-none transition-colors shadow-inner"
+              value={apiKey}
+              onChange={(e) => {
+                setApiKey(e.target.value);
+                localStorage.setItem("user_gemini_key", e.target.value);
+              }}
+            />
+            <p className="text-[10px] text-slate-500 mt-2 text-left px-2">
+              *Key được lưu ở trình duyệt, nếu để trống sẽ dùng quota mặc định của server.
+            </p>
+          </div>
 
           {!resultText && !error && (
             <div className="relative group">
